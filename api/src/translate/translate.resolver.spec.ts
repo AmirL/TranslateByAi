@@ -1,16 +1,16 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { AiResolver } from './ai.resolver';
-import { AiService } from './ai.service';
+import { TranslateResolver } from './translate.resolver';
+import { TranslateService } from './translate.service';
 
 describe('AiResolver', () => {
-  let resolver: AiResolver;
+  let resolver: TranslateResolver;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      providers: [AiResolver, AiService],
+      providers: [TranslateResolver, TranslateService],
     }).compile();
 
-    resolver = module.get<AiResolver>(AiResolver);
+    resolver = module.get<TranslateResolver>(TranslateResolver);
   });
 
   it('should be defined', () => {

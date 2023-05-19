@@ -3,8 +3,11 @@
 # ------------------------------------------------------
 
 type Translation {
+  """The id of the translation"""
+  id: String!
+
   """The source language of the text"""
-  languageSource: String!
+  languageSource: String
 
   """The target language of the text"""
   languageTarget: String!
@@ -15,4 +18,20 @@ type Translation {
 
 type Query {
   translate: Translation!
+}
+
+type Mutation {
+  requestTranslation(input: RequestTranslation!): Translation!
+}
+
+input RequestTranslation {
+  """The target language of the text"""
+  languageTarget: String!
+
+  """The translated text"""
+  text: String!
+}
+
+type Subscription {
+  translationReceived: Translation!
 }
