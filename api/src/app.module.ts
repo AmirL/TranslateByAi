@@ -5,6 +5,7 @@ import { AiModule } from './ai/ai.module';
 import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { join } from 'path';
+import { MessagingModule } from './messaging-module/messaging.module';
 
 @Module({
   imports: [
@@ -14,7 +15,9 @@ import { join } from 'path';
       playground: true,
       autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
     }),
-    AiModule],
+    AiModule,
+    MessagingModule,
+  ],
   controllers: [AppController],
   providers: [AppService],
 })

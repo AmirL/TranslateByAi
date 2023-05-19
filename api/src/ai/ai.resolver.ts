@@ -6,7 +6,7 @@ import { Translation } from './entities/translation.entity';
 export class AiResolver {
   constructor(private readonly aiService: AiService) {}
 
-  @Query(() => Translation, {name: 'translate'})
+  @Query(() => Translation, { name: 'translate' })
   translate() {
     return this.aiService.translate();
   }
