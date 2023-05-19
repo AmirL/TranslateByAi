@@ -1,0 +1,18 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Translation {
+  """The source language of the text"""
+  languageSource: String!
+
+  """The target language of the text"""
+  languageTarget: String!
+
+  """The translated text"""
+  text: String!
+}
+
+type Query {
+  translate: Translation!
+}
