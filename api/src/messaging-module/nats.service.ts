@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, Logger, LoggerService } from '@nestjs/common';
 import { MessagingService } from './messaging.service';
 import {
   ClientProxy,
@@ -10,6 +10,8 @@ import {
 export class NatsService implements MessagingService {
   private readonly client: ClientProxy;
 
+  private readonly logger: LoggerService = new Logger(NatsService.name);
+
   constructor() {
     this.client = ClientProxyFactory.create({
       transport: Transport.NATS,
@@ -19,8 +21,8 @@ export class NatsService implements MessagingService {
     });
   }
 
-  async send(subject: string, payload: any): Promise<any> {
-    console.log(`NatsService: send ${subject} ${JSON.stringify(payload)}`);
+  async emit(subject: string, payload: any): Promise<any> {
+    this.logger.log(`emit event ${subject} ${JSON.stringify(payload)}`);
     return this.client.emit(subject, payload);
   }
 }

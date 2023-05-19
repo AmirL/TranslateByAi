@@ -7,7 +7,7 @@ export class AiService {
   constructor(private readonly messagingService: MessagingService) {}
 
   async translate(): Promise<Translation> {
-    const result = await this.messagingService.send('ai.translate', {
+    await this.messagingService.emit('ai.translate', {
       some: 'data',
     });
 
