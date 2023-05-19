@@ -6,8 +6,11 @@ import { MessagingService } from '../messaging-module/messaging.service';
 export class AiService {
   constructor(private readonly messagingService: MessagingService) {}
 
-  translate(): Translation {
-    this.messagingService.send('ai.translate', { some: 'data' });
+  async translate(): Promise<Translation> {
+    const result = await this.messagingService.send('ai.translate', {
+      some: 'data',
+    });
+
     return {
       languageSource: 'en',
       languageTarget: 'fr',
