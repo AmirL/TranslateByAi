@@ -11,7 +11,9 @@ export class AppController {
   async translate(data: Translation) {
     console.log('Received message from ai.translate', data);
     data.languageSource = 'en';
-    data.text = 'TRANSLATED TEXT FROM AI';
+    data.translatedText = 'TRANSLATED TEXT FROM AI';
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+
     await this.appService.sendTranslated(data);
   }
 }

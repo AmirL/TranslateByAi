@@ -11,8 +11,11 @@ export class Translation {
   @Field(() => String, { description: 'The target language of the text' })
   languageTarget: string;
 
-  @Field(() => String, { description: 'The translated text' })
+  @Field(() => String, { description: 'The original text' })
   text: string;
+
+  @Field(() => String, { description: 'The translated text' })
+  translatedText: string;
 
   // TODO list of all words in the text with their translations
 }

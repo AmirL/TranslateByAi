@@ -2,13 +2,15 @@ import { Args, Mutation, Query, Resolver, Subscription } from '@nestjs/graphql';
 import { TranslateService as TranslateService } from './translate.service';
 import { Translation } from './entities/translation.entity';
 import { RequestTranslation as RequestTranslationInput } from './dto/request-translation.input';
+import { Inject } from '@nestjs/common';
 import { PubSub } from 'graphql-subscriptions';
-
-const pubSub = new PubSub();
 
 @Resolver()
 export class TranslateResolver {
-  constructor(private readonly translateService: TranslateService) {}
+  constructor(
+    private readonly translateService: TranslateService,
+    @Inject('PUB_SUB') private readonly pubSub: PubSub,
+  ) {}
 
   @Mutation(() => Translation)
   requestTranslation(@Args('input') input: RequestTranslationInput) {
@@ -22,12 +24,13 @@ export class TranslateResolver {
       languageSource: 'en',
       languageTarget: 'fr',
       text: 'Hello world!',
+      translatedText: 'Bonjour le monde!',
     };
     return translation;
   }
 
   @Subscription(() => Translation)
   translationReceived() {
-    return pubSub.asyncIterator('translationReceived');
+    return this.pubSub.asyncIterator('translationReceived');
   }
 }

@@ -8,12 +8,17 @@ import {
 } from '@nestjs/microservices';
 import { MESSAGE_SERVICE } from './messaging.constants';
 import { MessagingController } from './messaging.controller';
+import { PubSub } from 'graphql-subscriptions';
 
 @Module({
   providers: [
     {
       provide: MessagingService,
       useClass: NatsService,
+    },
+    {
+      provide: 'PUB_SUB',
+      useValue: new PubSub(),
     },
   ],
   imports: [
@@ -28,7 +33,7 @@ import { MessagingController } from './messaging.controller';
       },
     ]),
   ],
-  exports: [MessagingService],
+  exports: [MessagingService, 'PUB_SUB'],
   controllers: [MessagingController],
 })
 export class MessagingModule {}

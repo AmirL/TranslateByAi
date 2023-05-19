@@ -8,21 +8,15 @@ import { generate as shortUUID } from 'short-uuid';
 export class TranslateService {
   constructor(private readonly messagingService: MessagingService) {}
 
-  async onModuleInit() {
-    // await this.messagingService.subscribe('ai.translationReceived', (data) => {
-    //   console.log('Received message from ai.translationReceived', data);
-    // });
-  }
-
   async translate(input: RequestTranslation): Promise<Translation> {
     const translationRequest: Translation = {
       id: shortUUID(),
       languageTarget: input.languageTarget,
       text: input.text,
+      translatedText: '',
     };
 
     await this.messagingService.emit('ai.translate', translationRequest);
-    // await this.messagingService.emit('ai.translate2', translationRequest);
 
     return translationRequest;
   }

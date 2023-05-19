@@ -12,8 +12,11 @@ type Translation {
   """The target language of the text"""
   languageTarget: String!
 
-  """The translated text"""
+  """The original text"""
   text: String!
+
+  """The translated text"""
+  translatedText: String!
 }
 
 type Query {

@@ -8,6 +8,10 @@ async function bootstrap() {
     AppModule,
     {
       transport: Transport.NATS,
+      options: {
+        url: 'nats://localhost:4222',
+        debug: false,
+      },
     },
   );
   await app.listen();
