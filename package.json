@@ -5,7 +5,8 @@
   ],
   "name": "translate-by-ai",
   "scripts": {
-    "dev-common": "lerna run dev-common"
+    "start:dev": "lerna run start:dev --parallel --stream",
+    "start:nats": "docker run -p 4222:4222 -ti nats -DV"
   },
   "devDependencies": {
     "lerna": "^6.6.2"
