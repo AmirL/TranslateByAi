@@ -1,13 +1,16 @@
-import { Inject, Injectable } from '@nestjs/common';
+import { Inject, Injectable, Logger } from '@nestjs/common';
 import { RequestTranslation } from './dto/request-translation.input';
 import { generate as shortUUID } from 'short-uuid';
 import { Translation } from './entities/translation.entity';
 import { ClientProxy } from '@nestjs/microservices';
-import { firstValueFrom } from 'rxjs';
+import { catchError, firstValueFrom, of, timeout } from 'rxjs';
+import { AI_SERVICE } from './translate.const';
+import { MESSAGE } from '@translate-by-ai/common';
+import { GraphQLError } from 'graphql';
 
 @Injectable()
 export class TranslateService {
-  constructor(@Inject('AI_SERVICE') private readonly client: ClientProxy) {}
+  constructor(@Inject(AI_SERVICE) private readonly client: ClientProxy) {}
 
   async translate(input: RequestTranslation): Promise<Translation> {
     const translationRequest: Translation = {
@@ -15,12 +18,19 @@ export class TranslateService {
       languageTarget: input.languageTarget,
       text: input.text,
     };
-    console.log(
-      'Sending message to ai.translate',
-      await firstValueFrom(
-        this.client.send('ai.translate', translationRequest),
+    Logger.log('Sending message to ai.translate', 'TranslateService');
+
+    const result = await firstValueFrom(
+      this.client.send(MESSAGE.AI_TRANSLATE, translationRequest).pipe(
+        timeout(3000),
+        catchError((error) => of({ success: false, error })),
       ),
     );
+
+    if (!result.success) {
+      Logger.error(result.error, 'TranslateService');
+      throw new GraphQLError('Error sending message to ai.translate', {});
+    }
 
     return translationRequest;
   }

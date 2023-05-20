@@ -27,7 +27,6 @@
     "@nestjs/graphql": "^11.0.5",
     "@nestjs/microservices": "^9.4.1",
     "@nestjs/platform-express": "^9.0.0",
-    "common": "^0.2.5",
     "graphql": "^16.6.0",
     "graphql-subscriptions": "^2.0.0",
     "nats": "^2.13.1",

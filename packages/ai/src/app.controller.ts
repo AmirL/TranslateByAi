@@ -1,13 +1,13 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller } from '@nestjs/common';
 import { AppService } from './app.service';
-import { EventPattern, MessagePattern } from '@nestjs/microservices';
-import { ITranslation } from '@translate-by-ai/common';
+import { MessagePattern } from '@nestjs/microservices';
+import { ITranslation, MESSAGE } from '@translate-by-ai/common';
 
 @Controller()
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
-  @MessagePattern('ai.translate')
+  @MessagePattern(MESSAGE.AI_TRANSLATE)
   async translate(data: ITranslation) {
     console.log('Received message from ai.translate', data);
 

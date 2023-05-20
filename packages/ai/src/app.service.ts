@@ -4,6 +4,7 @@ import {
   ClientProxyFactory,
   Transport,
 } from '@nestjs/microservices';
+import { EVENT } from '@translate-by-ai/common';
 
 @Injectable()
 export class AppService {
@@ -20,7 +21,7 @@ export class AppService {
   }
 
   async sendTranslated(payload: any) {
-    await this.client.emit('api.translated', payload);
+    await this.client.emit(EVENT.TEXT_TRANSLATED, payload);
   }
 
   getHello(): string {
