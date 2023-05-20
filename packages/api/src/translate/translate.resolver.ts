@@ -1,9 +1,10 @@
 import { Args, Mutation, Query, Resolver, Subscription } from '@nestjs/graphql';
 import { TranslateService as TranslateService } from './translate.service';
-import { Translation } from './entities/translation.entity';
+
 import { RequestTranslation as RequestTranslationInput } from './dto/request-translation.input';
 import { Inject } from '@nestjs/common';
 import { PubSub } from 'graphql-subscriptions';
+import { Translation } from './entities/translation.entity';
 
 @Resolver()
 export class TranslateResolver {

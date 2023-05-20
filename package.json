@@ -1,7 +1,10 @@
 {
   "private": true,
   "workspaces": [
-    "api",
-    "ai"
-  ]
+    "packages/*"
+  ],
+  "name": "translate-by-ai",
+  "devDependencies": {
+    "lerna": "^6.6.2"
+  }
 }

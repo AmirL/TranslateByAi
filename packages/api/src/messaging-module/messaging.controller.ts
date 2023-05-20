@@ -1,4 +1,4 @@
-import { Controller, Inject } from '@nestjs/common';
+import { Controller, Inject, Logger } from '@nestjs/common';
 import { MESSAGE_SERVICE } from './messaging.constants';
 import { ClientProxy, EventPattern } from '@nestjs/microservices';
 import { PubSub } from 'graphql-subscriptions';
@@ -12,7 +12,11 @@ export class MessagingController {
 
   @EventPattern('api.translated')
   async translate(data: Record<string, unknown>) {
-    console.log('Received message from api.translated', data);
+    Logger.log(
+      'Received message from api.translated',
+      data,
+      'MessagingController',
+    );
     this.pubSub.publish('translationReceived', { translationReceived: data });
   }
 }

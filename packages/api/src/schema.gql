@@ -16,7 +16,7 @@ type Translation {
   text: String!
 
   """The translated text"""
-  translatedText: String!
+  translatedText: String
 }
 
 type Query {

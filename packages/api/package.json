@@ -1,5 +1,5 @@
 {
-  "name": "ai",
+  "name": "api",
   "version": "0.0.1",
   "description": "",
   "author": "",
@@ -20,14 +20,21 @@
     "test:e2e": "jest --config ./test/jest-e2e.json"
   },
   "dependencies": {
+    "@apollo/server": "^4.7.1",
+    "@nestjs/apollo": "^11.0.5",
     "@nestjs/common": "^9.0.0",
     "@nestjs/core": "^9.0.0",
-    "@nestjs/mapped-types": "*",
+    "@nestjs/graphql": "^11.0.5",
     "@nestjs/microservices": "^9.4.1",
     "@nestjs/platform-express": "^9.0.0",
+    "common": "^0.2.5",
+    "graphql": "^16.6.0",
+    "graphql-subscriptions": "^2.0.0",
     "nats": "^2.13.1",
     "reflect-metadata": "^0.1.13",
-    "rxjs": "^7.2.0"
+    "rxjs": "^7.2.0",
+    "@translate-by-ai/common": "1.0.0",
+    "short-uuid": "^4.2.2"
   },
   "devDependencies": {
     "@nestjs/cli": "^9.0.0",

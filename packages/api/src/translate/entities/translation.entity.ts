@@ -1,7 +1,8 @@
 import { Field, ObjectType } from '@nestjs/graphql';
+import { ITranslation } from 'common';
 
 @ObjectType()
-export class Translation {
+export class Translation implements ITranslation {
   @Field(() => String, { description: 'The id of the translation' })
   id: string;
 
@@ -15,7 +16,7 @@ export class Translation {
   text: string;
 
   @Field(() => String, { description: 'The translated text' })
-  translatedText: string;
+  translatedText?: string;
 
   // TODO list of all words in the text with their translations
 }
