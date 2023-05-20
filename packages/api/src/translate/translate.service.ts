@@ -1,13 +1,13 @@
-import { Injectable } from '@nestjs/common';
-
-import { MessagingService } from '../messaging-module/messaging.service';
+import { Inject, Injectable } from '@nestjs/common';
 import { RequestTranslation } from './dto/request-translation.input';
 import { generate as shortUUID } from 'short-uuid';
 import { Translation } from './entities/translation.entity';
+import { ClientProxy } from '@nestjs/microservices';
+import { firstValueFrom } from 'rxjs';
 
 @Injectable()
 export class TranslateService {
-  constructor(private readonly messagingService: MessagingService) {}
+  constructor(@Inject('AI_SERVICE') private readonly client: ClientProxy) {}
 
   async translate(input: RequestTranslation): Promise<Translation> {
     const translationRequest: Translation = {
@@ -15,8 +15,12 @@ export class TranslateService {
       languageTarget: input.languageTarget,
       text: input.text,
     };
-
-    await this.messagingService.emit('ai.translate', translationRequest);
+    console.log(
+      'Sending message to ai.translate',
+      await firstValueFrom(
+        this.client.send('ai.translate', translationRequest),
+      ),
+    );
 
     return translationRequest;
   }

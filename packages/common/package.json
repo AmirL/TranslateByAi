@@ -2,8 +2,9 @@
   "name": "@translate-by-ai/common",
   "version": "1.0.0",
   "description": "",
-  "main": "index.ts",
+  "main": "dist/index.js",
   "scripts": {
+    "dev-common": "tsc -w",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

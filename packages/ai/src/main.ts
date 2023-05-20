@@ -2,6 +2,7 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 
 import { MicroserviceOptions, Transport } from '@nestjs/microservices';
+import { Queues } from '@translate-by-ai/common';
 
 async function bootstrap() {
   const app = await NestFactory.createMicroservice<MicroserviceOptions>(
@@ -11,6 +12,7 @@ async function bootstrap() {
       options: {
         url: 'nats://localhost:4222',
         debug: false,
+        queue: Queues.AI,
       },
     },
   );

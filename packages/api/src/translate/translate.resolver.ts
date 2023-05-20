@@ -10,7 +10,7 @@ import { Translation } from './entities/translation.entity';
 export class TranslateResolver {
   constructor(
     private readonly translateService: TranslateService,
-    @Inject('PUB_SUB') private readonly pubSub: PubSub,
+    private readonly pubSub: PubSub,
   ) {}
 
   @Mutation(() => Translation)

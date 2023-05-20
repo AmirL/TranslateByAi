@@ -4,6 +4,9 @@
     "packages/*"
   ],
   "name": "translate-by-ai",
+  "scripts": {
+    "dev-common": "lerna run dev-common"
+  },
   "devDependencies": {
     "lerna": "^6.6.2"
   }

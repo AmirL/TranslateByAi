@@ -1,5 +1,5 @@
 import { Field, ObjectType } from '@nestjs/graphql';
-import { ITranslation } from 'common';
+import { ITranslation } from 'common/src';
 
 @ObjectType()
 export class Translation implements ITranslation {

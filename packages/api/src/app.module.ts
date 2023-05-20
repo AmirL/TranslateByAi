@@ -5,8 +5,6 @@ import { TranslateModule } from './translate/translate.module';
 import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { join } from 'path';
-import { MessagingModule } from './messaging-module/messaging.module';
-import { BookModule } from './book/book.module';
 
 @Module({
   imports: [
@@ -20,8 +18,6 @@ import { BookModule } from './book/book.module';
       autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
     }),
     TranslateModule,
-    MessagingModule,
-    BookModule,
   ],
   controllers: [AppController],
   providers: [AppService],

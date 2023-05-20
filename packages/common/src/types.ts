@@ -1,10 +1,3 @@
-interface User {
-  firstName: string;
-  lastName: string;
-}
-
-export { User };
-
 interface ITranslation {
   id: string;
   languageSource?: string;
@@ -14,3 +7,9 @@ interface ITranslation {
 }
 
 export { ITranslation };
+
+const Queues = {
+  AI: 'ai',
+};
+
+export { Queues };
