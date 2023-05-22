@@ -6,7 +6,7 @@
   "name": "translate-by-ai",
   "scripts": {
     "start:dev": "lerna run start:dev --parallel --stream",
-    "start:nats": "docker run -p 4222:4222 -ti nats -DV"
+    "start:nats-server": "./nats-docker-start.sh"
   },
   "devDependencies": {
     "lerna": "^6.6.2"
