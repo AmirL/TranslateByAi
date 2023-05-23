@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "@translate-by-ai/common": "^1.0.0",
+    "graphql-ws": "^5.13.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-relay": "^15.0.0",

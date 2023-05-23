@@ -1,3 +1,35 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+.typing-animation {
+  display: flex;
+
+  animation: typing 1s linear;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+@keyframes cursor-blink {
+  0% {
+    opacity: 0;
+  }
+}
+
+.typing-animation_cursor::after {
+  content: '';
+  width: 5px;
+  height: 20px;
+  background: rgb(0, 0, 0);
+  display: inline-block;
+  animation: cursor-blink 1.5s steps(2) infinite;
+}

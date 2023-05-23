@@ -7,10 +7,14 @@ import { catchError, firstValueFrom, of, timeout } from 'rxjs';
 import { AI_SERVICE } from './translate.const';
 import { MESSAGE } from '@translate-by-ai/common';
 import { GraphQLError } from 'graphql';
+import { PubSub } from 'graphql-subscriptions';
 
 @Injectable()
 export class TranslateService {
-  constructor(@Inject(AI_SERVICE) private readonly client: ClientProxy) {}
+  constructor(
+    @Inject(AI_SERVICE) private readonly client: ClientProxy,
+    private readonly pubSub: PubSub,
+  ) {}
 
   async translate(input: RequestTranslation): Promise<Translation> {
     const translationRequest: Translation = {
@@ -31,6 +35,11 @@ export class TranslateService {
       Logger.error(result.error, 'TranslateService');
       throw new GraphQLError('Error sending message to ai.translate', {});
     }
+
+    // send the translation request to the client subscription
+    this.pubSub.publish('translationReceived', {
+      translationReceived: translationRequest,
+    });
 
     return translationRequest;
   }

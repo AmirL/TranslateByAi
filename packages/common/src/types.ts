@@ -1,9 +1,9 @@
 interface ITranslation {
   id: string;
-  languageSource?: string;
+  languageSource?: string | null;
   languageTarget: string;
   text: string;
-  translatedText?: string;
+  translatedText?: string | null;
 }
 
 export { ITranslation };

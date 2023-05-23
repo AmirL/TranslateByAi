@@ -44,20 +44,22 @@ export const InputForm = () => {
   }
 
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center text-center">
-      <label className="m-2 text-2xl">Message</label>
-      <textarea
-        className="h-48 w-96 rounded-lg  border-2 border-gray-300 p-3"
-        onChange={(e) => setMessage(e.target.value)}
-        value={message}
-      ></textarea>
-      <button
-        className="m-2 rounded bg-blue-500 px-4 py-2 font-bold text-white hover:bg-blue-700 disabled:opacity-50"
-        onClick={sendMessage}
-        disabled={message.length <= 5}
-      >
-        {isInFlight ? 'Sending...' : 'Request translation'}
-      </button>
-    </div>
+    <>
+      <div className="flex flex-col">
+        <label className="m-2 text-2xl">Message</label>
+        <textarea
+          className="h-48 w-96 rounded-lg  border-2 border-gray-300 p-3"
+          onChange={(e) => setMessage(e.target.value)}
+          value={message}
+        ></textarea>
+        <button
+          className="m-2 rounded bg-blue-500 px-4 py-2 font-bold text-white hover:bg-blue-700 disabled:opacity-50"
+          onClick={sendMessage}
+          disabled={message.length <= 5}
+        >
+          {isInFlight ? 'Sending...' : 'Request translation'}
+        </button>
+      </div>
+    </>
   );
 };
