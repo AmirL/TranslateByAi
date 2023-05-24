@@ -8,7 +8,7 @@ import { EVENT, ITranslation } from '@translate-by-ai/common';
 import { ChatCompletionRequestMessage, Configuration, OpenAIApi } from 'openai';
 
 @Injectable()
-export class AppService {
+export class AiService {
   private client: ClientProxy;
   private configuration = new Configuration({
     apiKey: process.env.OPENAI_API_KEY,
