@@ -52,9 +52,9 @@ export const TranslatedList = () => {
 
   return (
     <>
-      <div className="ml-3 flex flex-col">
+      <div className="m-3 flex w-4/6 flex-col">
         <label className="m-2 text-2xl">Translated</label>
-        <div className="h-48 w-96">
+        <div className="">
           {state.map((item) => (
             <TranslatedMessage key={item.id} message={item} />
           ))}

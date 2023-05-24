@@ -36,7 +36,6 @@ const subscribe = (
   variables: any,
 ): Observable<GraphQLResponse> => {
   return Observable.create((sink) => {
-    console.log('subscribe', operation.name, operation.text, variables);
     return wsClient.subscribe(
       {
         operationName: operation.name,

@@ -7,7 +7,10 @@ export const subscription = graphql`
       languageSource
       languageTarget
       text
-      translatedText
+      sentences {
+        original
+        translated
+      }
     }
   }
 `;

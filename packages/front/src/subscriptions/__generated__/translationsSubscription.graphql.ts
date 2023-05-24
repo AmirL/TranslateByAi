@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<b64742c70867963f228dfc5b80af0da9>>
+ * @generated SignedSource<<4fe734d0c1479cb39270fca18a72d830>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -15,8 +15,11 @@ export type translationsSubscription$data = {
     readonly id: string;
     readonly languageSource: string | null;
     readonly languageTarget: string;
+    readonly sentences: ReadonlyArray<{
+      readonly original: string;
+      readonly translated: string;
+    }> | null;
     readonly text: string;
-    readonly translatedText: string | null;
   };
 };
 export type translationsSubscription = {
@@ -65,8 +68,26 @@ var v0 = [
       {
         "alias": null,
         "args": null,
-        "kind": "ScalarField",
-        "name": "translatedText",
+        "concreteType": "Sentence",
+        "kind": "LinkedField",
+        "name": "sentences",
+        "plural": true,
+        "selections": [
+          {
+            "alias": null,
+            "args": null,
+            "kind": "ScalarField",
+            "name": "original",
+            "storageKey": null
+          },
+          {
+            "alias": null,
+            "args": null,
+            "kind": "ScalarField",
+            "name": "translated",
+            "storageKey": null
+          }
+        ],
         "storageKey": null
       }
     ],
@@ -91,16 +112,16 @@ return {
     "selections": (v0/*: any*/)
   },
   "params": {
-    "cacheID": "3809e5351d5de8da9e8439905f1af1a1",
+    "cacheID": "927e5246f8e43cddb9b94895b4a25b72",
     "id": null,
     "metadata": {},
     "name": "translationsSubscription",
     "operationKind": "subscription",
-    "text": "subscription translationsSubscription {\n  translationReceived {\n    id\n    languageSource\n    languageTarget\n    text\n    translatedText\n  }\n}\n"
+    "text": "subscription translationsSubscription {\n  translationReceived {\n    id\n    languageSource\n    languageTarget\n    text\n    sentences {\n      original\n      translated\n    }\n  }\n}\n"
   }
 };
 })();
 
-(node as any).hash = "2872e5503b9328939a9a081d26e3e850";
+(node as any).hash = "2e69ec1006a76a0f61902c24864ac261";
 
 export default node;

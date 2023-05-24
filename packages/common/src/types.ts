@@ -3,10 +3,15 @@ interface ITranslation {
   languageSource?: string | null;
   languageTarget: string;
   text: string;
-  translatedText?: string | null;
+  readonly sentences?: readonly ISentence[] | null;
 }
 
-export { ITranslation };
+interface ISentence {
+  readonly original: string;
+  readonly translated: string;
+}
+
+export { ITranslation, ISentence };
 
 const Queues = {
   AI: 'ai',

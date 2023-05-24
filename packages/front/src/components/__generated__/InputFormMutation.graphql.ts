@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<72d23a4358e5e4513a4d490741de0ede>>
+ * @generated SignedSource<<ba9995568707a8b05429eb605e65a50c>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -22,7 +22,6 @@ export type InputFormMutation$data = {
     readonly languageSource: string | null;
     readonly languageTarget: string;
     readonly text: string;
-    readonly translatedText: string | null;
   };
 };
 export type InputFormMutation = {
@@ -80,13 +79,6 @@ v1 = [
         "kind": "ScalarField",
         "name": "text",
         "storageKey": null
-      },
-      {
-        "alias": null,
-        "args": null,
-        "kind": "ScalarField",
-        "name": "translatedText",
-        "storageKey": null
       }
     ],
     "storageKey": null
@@ -110,16 +102,16 @@ return {
     "selections": (v1/*: any*/)
   },
   "params": {
-    "cacheID": "3ae1ff1d945858e1659e69563ffb6142",
+    "cacheID": "86209b4cd51475cef967728d86790cbd",
     "id": null,
     "metadata": {},
     "name": "InputFormMutation",
     "operationKind": "mutation",
-    "text": "mutation InputFormMutation(\n  $input: RequestTranslation!\n) {\n  requestTranslation(input: $input) {\n    id\n    languageSource\n    languageTarget\n    text\n    translatedText\n  }\n}\n"
+    "text": "mutation InputFormMutation(\n  $input: RequestTranslation!\n) {\n  requestTranslation(input: $input) {\n    id\n    languageSource\n    languageTarget\n    text\n  }\n}\n"
   }
 };
 })();
 
-(node as any).hash = "b0066558fa1497478746aa21dcbbae17";
+(node as any).hash = "4dc07d2f014ebebd010535f672e47c62";
 
 export default node;

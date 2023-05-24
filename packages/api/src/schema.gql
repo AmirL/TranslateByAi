@@ -2,6 +2,11 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type Sentence {
+  original: String!
+  translated: String!
+}
+
 type Translation {
   """The id of the translation"""
   id: String!
@@ -15,8 +20,8 @@ type Translation {
   """The original text"""
   text: String!
 
-  """The translated text"""
-  translatedText: String
+  """The original text"""
+  sentences: [Sentence!]
 }
 
 type Query {

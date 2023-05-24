@@ -19,7 +19,6 @@ export const InputForm = () => {
         languageSource
         languageTarget
         text
-        translatedText
       }
     }
   `);
@@ -29,13 +28,12 @@ export const InputForm = () => {
       variables: {
         input: {
           text: message,
-          languageTarget: 'ru',
+          languageTarget: 'english',
         },
       },
       onCompleted: (data, errors) => {
         if (!errors) {
           setMessage('');
-          console.log(data.requestTranslation.text);
         } else {
           console.log('mutation errors', errors);
         }
@@ -45,10 +43,11 @@ export const InputForm = () => {
 
   return (
     <>
-      <div className="flex flex-col">
+      <div className="m-3 flex w-2/6 flex-col">
         <label className="m-2 text-2xl">Message</label>
         <textarea
-          className="h-48 w-96 rounded-lg  border-2 border-gray-300 p-3"
+          rows={20}
+          className=" rounded-lg  border-2 border-gray-300 p-3"
           onChange={(e) => setMessage(e.target.value)}
           value={message}
         ></textarea>

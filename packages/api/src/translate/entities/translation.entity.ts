@@ -1,5 +1,7 @@
 import { Field, ObjectType } from '@nestjs/graphql';
+import { ISentence } from '@translate-by-ai/common';
 import { ITranslation } from 'common/src';
+import { Sentence } from './sentence.entity';
 
 @ObjectType()
 export class Translation implements ITranslation {
@@ -15,8 +17,6 @@ export class Translation implements ITranslation {
   @Field(() => String, { description: 'The original text' })
   text: string;
 
-  @Field(() => String, { description: 'The translated text' })
-  translatedText?: string;
-
-  // TODO list of all words in the text with their translations
+  @Field(() => [Sentence], { description: 'The original text' })
+  sentences?: ISentence[];
 }

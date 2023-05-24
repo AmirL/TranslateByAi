@@ -23,7 +23,6 @@ export class TranslateResolver {
       languageSource: 'en',
       languageTarget: 'fr',
       text: 'Hello world!',
-      translatedText: 'Bonjour le monde!',
     };
     return translation;
   }
