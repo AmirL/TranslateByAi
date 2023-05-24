@@ -15,6 +15,7 @@ export { ITranslation, ISentence };
 
 const Queues = {
   AI: 'ai',
+  USER: 'user',
 };
 
 export { Queues };
