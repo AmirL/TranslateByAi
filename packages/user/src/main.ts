@@ -1,5 +1,5 @@
 import { NestFactory } from '@nestjs/core';
-import { UserModule } from './app.module';
+import { UserModule } from './user.module';
 import { Transport } from '@nestjs/microservices';
 import { Queues } from '@translate-by-ai/common';
 

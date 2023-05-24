@@ -25,14 +25,16 @@
     "@nestjs/common": "^9.0.0",
     "@nestjs/core": "^9.0.0",
     "@nestjs/graphql": "^11.0.5",
+    "@nestjs/jwt": "^10.0.3",
     "@nestjs/microservices": "^9.4.1",
     "@nestjs/platform-express": "^9.0.0",
+    "@node-rs/bcrypt": "^1.7.1",
+    "@translate-by-ai/common": "1.0.0",
     "graphql": "^16.6.0",
     "graphql-subscriptions": "^2.0.0",
     "nats": "^2.13.1",
     "reflect-metadata": "^0.1.13",
     "rxjs": "^7.2.0",
-    "@translate-by-ai/common": "1.0.0",
     "short-uuid": "^4.2.2"
   },
   "devDependencies": {

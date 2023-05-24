@@ -4,11 +4,12 @@ import { TranslateModule } from './translate/translate.module';
 import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { join } from 'path';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
     GraphQLModule.forRoot<ApolloDriverConfig>({
-      include: [TranslateModule],
+      include: [TranslateModule, AuthModule],
       driver: ApolloDriver,
       subscriptions: {
         'graphql-ws': true,
@@ -17,6 +18,7 @@ import { join } from 'path';
       autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
     }),
     TranslateModule,
+    AuthModule,
   ],
   providers: [],
 })

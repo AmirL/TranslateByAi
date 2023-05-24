@@ -24,12 +24,22 @@ type Translation {
   sentences: [Sentence!]
 }
 
+type AuthInfo {
+  token: String!
+}
+
 type Query {
   translate: Translation!
 }
 
 type Mutation {
+  signIn(input: SignInInput!): AuthInfo!
   requestTranslation(input: RequestTranslation!): Translation!
+}
+
+input SignInInput {
+  email: String!
+  password: String!
 }
 
 input RequestTranslation {
