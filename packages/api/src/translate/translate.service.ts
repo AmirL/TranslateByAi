@@ -25,7 +25,7 @@ export class TranslateService {
     Logger.log('Sending message to ai.translate', 'TranslateService');
 
     const result = await firstValueFrom(
-      this.client.send(MESSAGE.AI_TRANSLATE, translationRequest).pipe(
+      this.client.emit(MESSAGE.AI_TRANSLATE, translationRequest).pipe(
         timeout(3000),
         catchError((error) => of({ success: false, error })),
       ),

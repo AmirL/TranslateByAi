@@ -1,4 +1,4 @@
-import { Controller } from '@nestjs/common';
+import { Controller, Logger } from '@nestjs/common';
 import { AppService } from './app.service';
 import { MessagePattern } from '@nestjs/microservices';
 import { ITranslation, MESSAGE } from '@translate-by-ai/common';
@@ -9,10 +9,10 @@ export class AppController {
 
   @MessagePattern(MESSAGE.AI_TRANSLATE)
   async translate(data: ITranslation) {
-    console.log('Received message from ai.translate', data);
+    Logger.log('Received message from ai.translate', data);
 
     this.appService.translate(data);
 
-    return { success: true };
+    return true;
   }
 }

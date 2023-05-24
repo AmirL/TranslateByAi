@@ -89,8 +89,4 @@ export class AppService {
     }
     throw new Error('Invalid response from AI');
   }
-
-  getHello(): string {
-    return 'Hello World!';
-  }
 }
