@@ -11,7 +11,13 @@ interface ISentence {
   readonly translated: string;
 }
 
-export { ITranslation, ISentence };
+interface IUser {
+  id: string;
+  email: string;
+  hashedPassword?: string | null;
+}
+
+export { ITranslation, ISentence, IUser };
 
 const Queues = {
   AI: 'ai',

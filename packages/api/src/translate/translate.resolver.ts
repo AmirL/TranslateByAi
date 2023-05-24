@@ -16,17 +16,6 @@ export class TranslateResolver {
     return this.translateService.translate(input);
   }
 
-  @Query(() => Translation, { name: 'translate' })
-  translate() {
-    const translation: Translation = {
-      id: '123',
-      languageSource: 'en',
-      languageTarget: 'fr',
-      text: 'Hello world!',
-    };
-    return translation;
-  }
-
   @Subscription(() => Translation)
   translationReceived() {
     return this.pubSub.asyncIterator('translationReceived');

@@ -28,12 +28,21 @@ type AuthInfo {
   token: String!
 }
 
+type User {
+  """The id of the user"""
+  id: String!
+
+  """The email of the user"""
+  email: String!
+}
+
 type Query {
-  translate: Translation!
+  me: User!
 }
 
 type Mutation {
   signIn(input: SignInInput!): AuthInfo!
+  signUp(input: SignInInput!): AuthInfo!
   requestTranslation(input: RequestTranslation!): Translation!
 }
 
