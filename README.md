@@ -19,6 +19,11 @@ This is a simple show case of NestJS microservices. It has two microservices:
 
 It works through event-based communication. All messages are non-blocking and are sent through the NATS message broker. There could be multiple instances of the AI microservice, which will be automatically load balanced by NATS using a queue.
 
+
+## Structure
+
+[<img src="docs/diagram.jpg" width="400px">](docs/diagram.jpg)
+
 ## How to run
 
 1. npm run start:nats-server
