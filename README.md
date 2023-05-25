@@ -22,7 +22,7 @@ It works through event-based communication. All messages are non-blocking and ar
 
 ## Structure
 
-[<img src="docs/diagram.jpg" width="400px">](docs/diagram.jpg)
+[<img src="docs/diagram.jpg">](docs/diagram.jpg)
 
 ## How to run
 
