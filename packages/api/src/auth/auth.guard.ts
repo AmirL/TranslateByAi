@@ -11,29 +11,38 @@ import { Request } from 'express';
 
 @Injectable()
 export class AuthGuard implements CanActivate {
-  constructor(private jwtService: JwtService) {}
-
   async canActivate(context: ExecutionContext): Promise<boolean> {
     const ctx = GqlExecutionContext.create(context);
     const request = ctx.getContext().req;
     const token = this.extractTokenFromRequest(request);
+    const user = await AuthGuard.authorizeRequest(token);
+    request['user'] = user;
+    return true;
+  }
+
+  public static async authorizeRequest(token: string): Promise<IUser> {
     if (!token) {
       throw new UnauthorizedException();
     }
     try {
-      const user: IUser = await this.jwtService.verifyAsync(token, {
+      const jwtService = new JwtService({ secret: process.env.JWT_SECRET });
+      const user: IUser = await jwtService.verifyAsync(token, {
         secret: process.env.JWT_SECRET,
       });
-      // todo validate user
-      request['user'] = user;
+      return user;
     } catch {
       throw new UnauthorizedException();
     }
-    return true;
   }
 
   private extractTokenFromRequest(request: Request): string | undefined {
     const [type, token] = request.headers?.authorization?.split(' ') || [];
+    return type === 'Bearer' ? token : undefined;
+  }
+
+  public static extractTokenFromConnection(context: any): string | undefined {
+    const [type, token] =
+      context.connectionParams?.Authorization?.split(' ') || [];
     return type === 'Bearer' ? token : undefined;
   }
 }

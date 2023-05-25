@@ -3,6 +3,7 @@ interface ITranslation {
   languageSource?: string | null;
   languageTarget: string;
   text: string;
+  user_id: string;
   readonly sentences?: readonly ISentence[] | null;
 }
 

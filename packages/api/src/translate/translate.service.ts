@@ -16,22 +16,26 @@ export class TranslateService {
     private readonly pubSub: PubSub,
   ) {}
 
-  async translate(input: RequestTranslation): Promise<Translation> {
+  async translate(
+    input: RequestTranslation,
+    user_id: string,
+  ): Promise<Translation> {
     const translationRequest: Translation = {
       id: shortUUID(),
       languageTarget: input.languageTarget,
       text: input.text,
+      user_id,
     };
     Logger.log('Sending message to ai.translate', 'TranslateService');
 
     const result = await firstValueFrom(
       this.client.emit(MESSAGE.AI_TRANSLATE, translationRequest).pipe(
         timeout(3000),
-        catchError((error) => of({ success: false, error })),
+        catchError((error) => of({ error })),
       ),
     );
 
-    if (!result.success) {
+    if (result?.error) {
       Logger.error(result.error, 'TranslateService');
       throw new GraphQLError('Error sending message to ai.translate', {});
     }

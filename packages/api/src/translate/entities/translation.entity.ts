@@ -19,4 +19,7 @@ export class Translation implements ITranslation {
 
   @Field(() => [Sentence], { description: 'The original text' })
   sentences?: ISentence[];
+
+  @Field(() => String)
+  user_id: string;
 }
