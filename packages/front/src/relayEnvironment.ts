@@ -9,7 +9,7 @@ import {
 } from 'relay-runtime';
 
 // Define your GraphQL endpoint
-const graphqlEndpoint = 'http://localhost:3000/graphql';
+const graphqlEndpoint = import.meta.env.VITE_API ?? 'http://localhost:3000/graphql';
 
 // Implement the network layer
 const fetchQuery = async (operation: any, variables: any) => {
@@ -28,8 +28,9 @@ const fetchQuery = async (operation: any, variables: any) => {
 };
 
 const wsClient = createClient({
-  url: 'ws://localhost:3000/graphql',
+  url: import.meta.env.VITE_API_SOCKET ?? 'ws://localhost:3000/graphql',
 });
+
 
 const subscribe = (
   operation: any,

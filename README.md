@@ -12,10 +12,11 @@ NestJS microservices show case
 
 ## Description
 
-This is a simple show case of NestJS microservices. It has two microservices:
+This is a simple show case of NestJS microservices. It has 3 microservices:
 
 1. packages\api - GraphQL API microservice
-2. packages\ai - translation microservice (uses ChatGPT API)
+2. packages\ai - translation microservice (uses ChatGPT API), **event-based** communications.
+3. packages\user - user microservice (create\find and etc), **message-based** communcations.
 
 It works through event-based communication. All messages are non-blocking and are sent through the NATS message broker. There could be multiple instances of the AI microservice, which will be automatically load balanced by NATS using a queue.
 
