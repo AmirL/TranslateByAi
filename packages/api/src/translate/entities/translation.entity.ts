@@ -1,6 +1,5 @@
 import { Field, ObjectType } from '@nestjs/graphql';
-import { ISentence } from '@translate-by-ai/common';
-import { ITranslation } from 'common/src';
+import { ISentence, ITranslation } from '@translate-by-ai/common';
 import { Sentence } from './sentence.entity';
 
 @ObjectType()

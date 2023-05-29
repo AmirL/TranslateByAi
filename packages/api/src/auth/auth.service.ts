@@ -1,6 +1,6 @@
 import { Inject, Injectable } from '@nestjs/common';
 import { SignInInput } from './dto/sign-in.input';
-import * as bcrypt from '@node-rs/bcrypt';
+import * as bcrypt from 'bcrypt';
 import { AuthInfo } from './entities/authInfo.entity';
 import { JwtService } from '@nestjs/jwt';
 import { GraphQLError } from 'graphql';

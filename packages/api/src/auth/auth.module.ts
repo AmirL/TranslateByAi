@@ -4,7 +4,7 @@ import { AuthResolver } from './auth.resolver';
 import { JwtModule } from '@nestjs/jwt';
 import { ClientsModule, Transport } from '@nestjs/microservices';
 import { USER_SERVICE } from './auth.const';
-import { Queues } from '@translate-by-ai/common';
+import { NATS_SERVER, Queues } from '@translate-by-ai/common';
 
 @Module({
   imports: [
@@ -18,7 +18,7 @@ import { Queues } from '@translate-by-ai/common';
         name: USER_SERVICE,
         transport: Transport.NATS,
         options: {
-          url: 'nats://localhost:4222',
+          servers: NATS_SERVER,
           queue: Queues.USER,
           debug: false,
         },

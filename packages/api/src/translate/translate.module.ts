@@ -6,7 +6,7 @@ import { ClientsModule, Transport } from '@nestjs/microservices';
 import { TranslateController } from './translate.controller';
 import { PubSub } from 'graphql-subscriptions';
 import { AI_SERVICE } from './translate.const';
-import { Queues } from '@translate-by-ai/common';
+import { NATS_SERVER, Queues } from '@translate-by-ai/common';
 
 @Module({
   providers: [TranslateResolver, TranslateService, PubSub],
@@ -16,7 +16,7 @@ import { Queues } from '@translate-by-ai/common';
         name: AI_SERVICE,
         transport: Transport.NATS,
         options: {
-          url: 'nats://localhost:4222',
+          servers: NATS_SERVER,
           queue: Queues.AI,
           debug: false,
         },

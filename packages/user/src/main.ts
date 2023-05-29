@@ -1,13 +1,13 @@
 import { NestFactory } from '@nestjs/core';
 import { UserModule } from './user.module';
 import { Transport } from '@nestjs/microservices';
-import { Queues } from '@translate-by-ai/common';
+import { NATS_SERVER, Queues } from '@translate-by-ai/common';
 
 async function bootstrap() {
   const app = await NestFactory.createMicroservice(UserModule, {
     transport: Transport.NATS,
     options: {
-      url: 'nats://localhost:4222',
+      servers: NATS_SERVER,
       debug: false,
       queue: Queues.USER,
     },

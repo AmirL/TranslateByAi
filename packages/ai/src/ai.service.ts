@@ -4,7 +4,7 @@ import {
   ClientProxyFactory,
   Transport,
 } from '@nestjs/microservices';
-import { EVENT, ITranslation } from '@translate-by-ai/common';
+import { EVENT, ITranslation, NATS_SERVER } from '@translate-by-ai/common';
 import { ChatCompletionRequestMessage, Configuration, OpenAIApi } from 'openai';
 
 @Injectable()
@@ -19,7 +19,7 @@ export class AiService {
     this.client = ClientProxyFactory.create({
       transport: Transport.NATS,
       options: {
-        url: 'nats://localhost:4222',
+        servers: NATS_SERVER,
         debug: false,
       },
     });
